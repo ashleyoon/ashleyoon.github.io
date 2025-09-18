@@ -1,13 +1,12 @@
 ---
 layout: inner
 position: left
-title: 'Phantom'
+title: 'Page to Pillow'
 date: 2016-02-20 21:15:00
 categories: development design
-tags: Jekyll Sass Bootstrap
-featured_image: '/img/posts/04_phantom-jekyll-1130x864-2x.png'
-project_link: 'https://github.com/jamigibbs'
-button_icon: 'flask'
+tags: Figma Miro
+featured_image: 'ashleyoon/ashleyoon.github.io/img/posts/Screenshot 2025-09-17 at 23.30.33.png'
+project_link: 'https://www.figma.com/proto/32SNyCSzkgurxfrGdzhYcX/SleepApp-Wireframe?node-id=1-2&p=f&t=Is3D1Wkpc7zIrSXq-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2'
 button_text: 'Visit Project'
-lead_text: "A minimalist Jekyll theme that you're looking at it right now"
+lead_text: "A wellness app designed to help users wind down through bedtime reading and relaxation. Targeted primarily at students and busy individuals, the app blends structure and personalization to promote healthier sleep habits through curated book suggestions, customizable preferences, and a calming user experience."
 ---

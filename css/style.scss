@@ -19,8 +19,8 @@
 $primary: #0a0a0a;
 $secondary: #FF7B7B;
 
-%opensans { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
-%merriweather { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+%helveticaneue { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+%helveticaneue { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 
 /*--------------------------------------------------------------
 	1.0 Defaults
@@ -34,12 +34,12 @@ $secondary: #FF7B7B;
 
 body {
   background-color: #e9edf0;
-  @extend %opensans;
+  @extend %helveticaneue;
   -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  @extend %merriweather;
+  @extend %helveticaneue;
   font-weight: 700;
 }
 

@@ -18,7 +18,7 @@ email: 'yoon.ash@northeastern.edu'
 description: "I'm a sophomore at Northeastern University studying Computer Science and Design."
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://ashleyoon.github.io/" # the base hostname & protocol for your site, e.g. https://example.com
-linkedin_username: 'jamigibbs'
+linkedin_username: 'https://www.linkedin.com/in/ashleyooon/'
 github_username: 'ashleyoon'
 
 # Build settings

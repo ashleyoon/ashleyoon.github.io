@@ -4,7 +4,7 @@ position: right
 title: 'EasyBand'
 date: 2016-02-20 15:56:00
 categories: development design
-tags: WordPress PHP Sass
+tags: Kotlin Canva
 project_link: 'https://yoonash.myportfolio.com/easyband'
 button_text: 'Visit Project'
 button_icon: ''

@@ -1,13 +1,12 @@
 ---
 layout: inner
 position: left
-title: 'Weathercast'
+title: 'Portfolio'
 date: 2016-02-20 15:56:00
 categories: development
 tags: JavaScript AngularJS API Sass
-featured_image: '/img/posts/02_weathercast-1130x864-2x.png'
-project_link: 'http://github.com/jamigibbs/weathercast'
-button_icon: 'github'
+project_link: 'https://yoonash.myportfolio.com/work'
+button_icon: ''
 button_text: 'Visit Project'
-lead_text: 'A simple weather forecast app for your favorite city.'
+lead_text: 'A collection of my works including artwork.'
 ---

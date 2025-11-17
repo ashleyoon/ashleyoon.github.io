@@ -21,7 +21,7 @@
         <ul class="nav-links" id="navLinks">
             <li><a href="/">Home</a></li>
             <li><a href="/projects.html">Projects</a></li>
-            <li><a href="/#contact">Contact</a></li>
+            <li><a href="images/Ashley_Yoon_Resume.pdf" target="_blank">Resume</a></li>
         </ul>
     </nav>
 
@@ -128,7 +128,7 @@
         const lightboxClose = document.querySelector('.lightbox-close');
         
         // Add click event to all images in the grid and hero images
-        document.querySelectorAll('.project-images-grid img, .project-hero-image img').forEach(img => {
+        document.querySelectorAll('.project-images-grid img, .project-hero-image img, nav-links img').forEach(img => {
             img.addEventListener('click', () => {
                 lightbox.style.display = 'flex';
                 lightboxImg.src = img.src;
@@ -153,6 +153,7 @@
                 lightbox.style.display = 'none';
             }
         });
+
     </script>
 </body>
 </html>

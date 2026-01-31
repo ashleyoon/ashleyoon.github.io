@@ -1,132 +1,189 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ashley Yoon</title>
-    
+
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/images/favicon-96x96.png"
+      sizes="96x96"
+    />
     <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/images/apple-touch-icon.png"
+    />
     <link rel="manifest" href="/images/site.webmanifest" />
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <div class="custom-cursor"></div>
-    
+
     <nav>
-        <a href="/" class="logo">
-            <img src="images/logo.png">
-        </a>
-        <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="/">Home</a></li>
-            <li><a href="/projects.html">Projects</a></li>
-            <li><a href="images/Ashley_Yoon_Resume.pdf" target="_blank">Resume</a></li>
-        </ul>
+      <a href="/" class="logo">
+        <img src="/images/favicon.svg" />
+      </a>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects.html">Projects</a></li>
+        <li>
+          <a href="images/Ashley_Yoon_Resume.pdf" target="_blank">Resume</a>
+        </li>
+      </ul>
     </nav>
 
     <main class="home-container">
-        <div class="profile-section">
-            <div class="profile-image">
-                <img src="images/logo.png">
-            </div>
-            
-            <div class="about-text">
-                <h1>An aspiring <span class="highlight">product designer</span> passionate about creating beautiful and functional digital experiences.</h1>
-                
-                <p>Currently studying Computer Science and Design at Northeastern University.</p>
-            </div>
+      <div class="profile-section">
+        <div class="profile-header">
+          <div class="profile-image">
+            <img src="/images/Frame 2.png" />
+          </div>
         </div>
 
-        <footer id="contact">
-            <div class="social-links">
-                <a href="mailto:yoon.ash@northeastern.edu">Email</a>
-                <a href="https://github.com/ashleyoon" target="_blank">GitHub</a>
-                <a href="https://www.linkedin.com/in/ashleyooon/" target="_blank">LinkedIn</a>
-            </div>
-        </footer>
+        <div class="about-text">
+          <h1>
+            An aspiring
+            <span class="highlight">product designer</span> passionate about
+            creating beautiful and functional digital experiences.
+          </h1>
+
+          <p>Computer Science and Design @ Northeastern University.</p>
+        </div>
+      </div>
+
+      <footer id="contact">
+        <div class="social-links">
+          <a href="mailto:yoon.ash@northeastern.edu">Email</a>
+          <a href="https://github.com/ashleyoon" target="_blank">GitHub</a>
+          <a href="https://www.linkedin.com/in/ashleyooon/" target="_blank"
+            >LinkedIn</a
+          >
+        </div>
+      </footer>
     </main>
 
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
-        <span class="lightbox-close">&times;</span>
-        <img class="lightbox-content" id="lightbox-img" alt="Enlarged view">
+      <span class="lightbox-close">&times;</span>
+      <img class="lightbox-content" id="lightbox-img" alt="Enlarged view" />
     </div>
 
     <script>
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
+      // Text trail effect for highlight
+      const highlight = document.querySelector(".highlight");
 
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+      if (highlight) {
+        let lastTrailTime = 0;
+        const trailDelay = 100; // Milliseconds between each trail (adjust this!)
+
+        highlight.addEventListener("mousemove", (e) => {
+          const currentTime = Date.now();
+
+          // Only create trail if enough time has passed
+          if (currentTime - lastTrailTime > trailDelay) {
+            const trail = document.createElement("span");
+            trail.textContent = highlight.textContent;
+            trail.className = "highlight-trail";
+
+            // Position at mouse location
+            trail.style.left = e.pageX + "px";
+            trail.style.top = e.pageY + "px";
+
+            document.body.appendChild(trail);
+
+            lastTrailTime = currentTime;
+
+            // Remove after animation
+            setTimeout(() => {
+              trail.remove();
+            }, 1000);
+          }
+        });
+      }
+
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.getElementById("navLinks");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+
+      navLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+        });
+      });
+
+      // Custom cursor
+      const cursor = document.querySelector(".custom-cursor");
+
+      document.addEventListener("mousemove", (e) => {
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+      });
+
+      // Make cursor bigger on hover over links
+      const hoverElements = document.querySelectorAll(
+        "a, button, .project-card",
+      );
+
+      hoverElements.forEach((element) => {
+        element.addEventListener("mouseenter", () => {
+          cursor.classList.add("hover");
         });
 
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
+        element.addEventListener("mouseleave", () => {
+          cursor.classList.remove("hover");
+        });
+      });
+
+      // Lightbox functionality
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+      const lightboxClose = document.querySelector(".lightbox-close");
+
+      // Add click event to all images in the grid and hero images
+      document
+        .querySelectorAll(
+          ".project-images-grid img, .project-hero-image img",
+          ".onboarding-images-grid img",
+        )
+        .forEach((img) => {
+          img.addEventListener("click", () => {
+            lightbox.style.display = "flex";
+            lightboxImg.src = img.src;
+          });
         });
 
-        // Custom cursor
-        const cursor = document.querySelector('.custom-cursor');
-        
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
+      // Close lightbox when clicking the X
+      lightboxClose.addEventListener("click", () => {
+        lightbox.style.display = "none";
+      });
 
-        // Make cursor bigger on hover over links
-        const hoverElements = document.querySelectorAll('a, button, .project-card');
-        
-        hoverElements.forEach(element => {
-            element.addEventListener('mouseenter', () => {
-                cursor.classList.add('hover');
-            });
-            
-            element.addEventListener('mouseleave', () => {
-                cursor.classList.remove('hover');
-            });
-        });
+      // Close lightbox when clicking outside the image
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) {
+          lightbox.style.display = "none";
+        }
+      });
 
-        // Lightbox functionality
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        const lightboxClose = document.querySelector('.lightbox-close');
-        
-        // Add click event to all images in the grid and hero images
-        document.querySelectorAll('.project-images-grid img, .project-hero-image img', '.onboarding-images-grid img').forEach(img => {
-            img.addEventListener('click', () => {
-                lightbox.style.display = 'flex';
-                lightboxImg.src = img.src;
-            });
-        });
-        
-        // Close lightbox when clicking the X
-        lightboxClose.addEventListener('click', () => {
-            lightbox.style.display = 'none';
-        });
-        
-        // Close lightbox when clicking outside the image
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                lightbox.style.display = 'none';
-            }
-        });
-
-        // Close lightbox with ESC key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && lightbox.style.display === 'flex') {
-                lightbox.style.display = 'none';
-            }
-        });
+      // Close lightbox with ESC key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && lightbox.style.display === "flex") {
+          lightbox.style.display = "none";
+        }
+      });
     </script>
-    
-</body>
+  </body>
 </html>

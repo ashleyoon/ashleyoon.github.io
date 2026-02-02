@@ -54,8 +54,9 @@
         <div class="about-text">
           <h1>
             An aspiring
-            <span class="highlight">product designer</span> passionate about
-            creating beautiful and functional digital experiences.
+            <span class="highlight rotating-text">product designer</span>
+            passionate about creating beautiful and functional digital
+            experiences.
           </h1>
 
           <p>Computer Science and Design @ Northeastern University.</p>
@@ -80,36 +81,60 @@
     </div>
 
     <script>
-      // Text trail effect for highlight
-      const highlight = document.querySelector(".highlight");
+      // Rotating text effect - typing animation
+      const roles = [
+        "product designer",
+        "ui/ux designer",
+        "graphic designer",
+        "visual designer",
+        "brand designer",
+      ];
 
-      if (highlight) {
-        let lastTrailTime = 0;
-        const trailDelay = 100; // Milliseconds between each trail (adjust this!)
+      let currentRoleIndex = 0;
+      let currentCharIndex = 0;
+      let isDeleting = false;
+      const rotatingText = document.querySelector(".rotating-text");
 
-        highlight.addEventListener("mousemove", (e) => {
-          const currentTime = Date.now();
+      function typeText() {
+        if (!rotatingText) return;
 
-          // Only create trail if enough time has passed
-          if (currentTime - lastTrailTime > trailDelay) {
-            const trail = document.createElement("span");
-            trail.textContent = highlight.textContent;
-            trail.className = "highlight-trail";
+        const currentRole = roles[currentRoleIndex];
 
-            // Position at mouse location
-            trail.style.left = e.pageX + "px";
-            trail.style.top = e.pageY + "px";
+        if (isDeleting) {
+          // Remove character
+          rotatingText.textContent = currentRole.substring(
+            0,
+            currentCharIndex - 1,
+          );
+          currentCharIndex--;
 
-            document.body.appendChild(trail);
-
-            lastTrailTime = currentTime;
-
-            // Remove after animation
-            setTimeout(() => {
-              trail.remove();
-            }, 1000);
+          if (currentCharIndex === 0) {
+            isDeleting = false;
+            currentRoleIndex = (currentRoleIndex + 1) % roles.length;
+            setTimeout(typeText, 500); // Pause before typing next
+            return;
           }
-        });
+        } else {
+          // Add character
+          rotatingText.textContent = currentRole.substring(
+            0,
+            currentCharIndex + 1,
+          );
+          currentCharIndex++;
+
+          if (currentCharIndex === currentRole.length) {
+            isDeleting = true;
+            setTimeout(typeText, 2000); // Pause on complete word
+            return;
+          }
+        }
+
+        setTimeout(typeText, isDeleting ? 50 : 100); // Speed of typing/deleting
+      }
+
+      // Start the animation
+      if (rotatingText) {
+        typeText();
       }
 
       const hamburger = document.getElementById("hamburger");
